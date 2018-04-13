@@ -1,0 +1,17 @@
+data Anillo = UnAnillo {peso::Int,frase::String} deriving(Show)
+
+ let frodo = UnHobbit{
+     nombre="Frodo",
+     estatura=106,
+     salud=10,
+     fuerza=50,
+     anillo=unico}
+
+
+
+unico=UnAnillo{
+        peso=12,
+        frase="Un anillo para gobernarlos a todos. Un anillo para encontrarlos,un anillo para atraerlos a todos y atarlos en las tinieblas."    }
+unTercero=UnAnillo{
+        peso=14,
+        frase="¡Avanzad sin temor a la oscuridad! ¡Luchad, luchad jinetes de Theoden, caerán las lanzas, se quebrarán los escudos, aún restará la espada!."}
