@@ -36,15 +36,15 @@ frodo = UnHobbit{
 
 
 poderDeAnillo (UnAnillo peso frase) = peso*(length(frase))
-poder (UnHobbit _ _ _ _ _ a) = poderDeAnillo a
+poder(UnHobbit _ _ _ _ _ a) = poderDeAnillo a
 
-cambiarAnillo (UnHobbit nombre estatura salud fuerza esDeLaComarca anillo)  = (UnHobbit nombre estatura salud fuerza esDeLaComarca unTercero)
+cambiarAnillo (UnHobbit n e s f es a)  = (UnHobbit n e s f es unTercero)
 
 esF = (('F' == ).head)
 
 
-calculo False (UnHobbit _ _ salud fuerza esDeLaComarca _) = (fuerza * salud) 
-calculo True (UnHobbit _ estatura salud fuerza esDeLaComarca _) = ((estatura*salud)+fuerza)
+calculo False (UnHobbit _ _ salud fuerza _ _) = (fuerza * salud) 
+calculo True (UnHobbit _ estatura salud fuerza _ _) = ((estatura*salud)+fuerza)
 
 sumaConF False = 0
 sumaConF True  = 10
