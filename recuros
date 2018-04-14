@@ -15,3 +15,7 @@ unico=UnAnillo{
 unTercero=UnAnillo{
         peso=14,
         frase="¡Avanzad sin temor a la oscuridad! ¡Luchad, luchad jinetes de Theoden, caerán las lanzas, se quebrarán los escudos, aún restará la espada!."}
+
+
+deLaComarca (UnHobbit nombre estatura salud fuerza esDeLaComarca anillo) = estatura*salud+fuerza
+noEsDeLaComarca (UnHobbit nombre estatura salud fuerza esDeLaComarca anillo) = salud*fuerza
