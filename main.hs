@@ -36,23 +36,28 @@ frodo = UnHobbit{
 
 
 poderDeAnillo (UnAnillo peso frase) = peso*(length(frase))
+poder (UnHobbit _ _ _ _ _ a) = poderDeAnillo a
 
 cambiarAnillo (UnHobbit nombre estatura salud fuerza esDeLaComarca anillo)  = (UnHobbit nombre estatura salud fuerza esDeLaComarca unTercero)
 
 esF = (('F' == ).head)
 
-valor True = 1
-valor False = 0
 
-nocomarca (UnHobbit _ _ salud fuerza esDeLaComarca _) = (fuerza * salud) * valor (not(esDeLaComarca))
-comarca (UnHobbit _ estatura salud fuerza esDeLaComarca _) = (((estatura*salud)+fuerza)*valor esDeLaComarca) 
-sumaConF (UnHobbit n _ _ _ _ _) = 10 * valor(esF n)
-calculoSinResta a = (nocomarca a) + (comarca a) + (sumaConF a)
-poder (UnHobbit _ _ _ _ _ a) = poderDeAnillo a
-menosAnillo a = calculoSinResta a - poder a
-resistencia a = valor (not(menosAnillo a < 0) ) * menosAnillo a
+calculo False (UnHobbit _ _ salud fuerza esDeLaComarca _) = (fuerza * salud) 
+calculo True (UnHobbit _ estatura salud fuerza esDeLaComarca _) = ((estatura*salud)+fuerza)
 
-desayuno (UnHobbit n e s f es a)  = (UnHobbit ("Errrp"++n) e (s+5) f es a)
+sumaConF False = 0
+sumaConF True  = 10
+
+previo (UnHobbit n e s f es a) = calculo es (UnHobbit n e s f es a) + sumaConF(esF n)
+
+mayorACero True previo = 0
+mayorACero False previo = previo
+
+resistencia hobit = mayorACero((previo hobit)<poder(hobit)) (previo hobit - poder(hobit))
+
+
+desayuno (UnHobbit n e s f es a)  = (UnHobbit ("Errrp"++n) e (s+5) f es a) 
 
 segundoDesayuno cant (UnHobbit n e s f es a)  = (UnHobbit n e s (f+(cant*4)) es a)
 
